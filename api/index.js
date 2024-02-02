@@ -1,5 +1,18 @@
 import express from "express";
+import mongoose from "mongoose";
+import dotenv from "dotenv";
+if (process.env.NODE_ENV !== "production") {
+  dotenv.config();
+}
+const dbUrl = process.env.DB_URL || "mongodb://localhost:27017/blog-website"; //precautionary measure
 const app = express();
+dotenv.config();
+mongoose
+  .connect(dbUrl)
+  .then(() => {
+    console.log("MongoDB Connected...");
+  })
+  .catch((err) => console.log(err));
 
 app.get("/", (req, res) => {
   res.send("Hello from express!");
