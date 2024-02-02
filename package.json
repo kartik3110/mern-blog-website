@@ -1,0 +1,25 @@
+{
+  "name": "mern-blog-website",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon api/index.js",
+    "start": "node api/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kartik3110/mern-blog-website.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kartik3110/mern-blog-website/issues"
+  },
+  "homepage": "https://github.com/kartik3110/mern-blog-website#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
