@@ -1,6 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import userRoutes from "./routes/user.route.js";
 if (process.env.NODE_ENV !== "production") {
   dotenv.config();
 }
@@ -13,6 +14,9 @@ mongoose
     console.log("MongoDB Connected...");
   })
   .catch((err) => console.log(err));
+
+// routes
+app.use("/api/user", userRoutes);
 
 app.get("/", (req, res) => {
   res.send("Hello from express!");
