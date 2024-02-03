@@ -6,7 +6,7 @@ import authRoutes from "./routes/auth.route.js";
 if (process.env.NODE_ENV !== "production") {
   dotenv.config();
 }
-const dbUrl = process.env.DB_URL || "mongodb://localhost:27017/blog-website"; //precautionary measure
+const dbUrl = process.env.DB_URL || "mongodb://127.0.0.1:27017/blog-website"; //precautionary measure
 const app = express();
 dotenv.config();
 mongoose
