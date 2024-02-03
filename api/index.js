@@ -25,6 +25,12 @@ app.get("/", (req, res) => {
   res.send("Hello from express!");
 });
 
+//custom error handler
+app.use((err, req, res, next) => {
+  const { status = 500, message = "something went wrong" } = err;
+  res.status(status).json({ success: false, code: status, message });
+});
+
 app.listen(3000, () => {
   console.log("Server is running on port 3000 🚀");
 });

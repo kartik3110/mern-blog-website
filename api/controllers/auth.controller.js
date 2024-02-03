@@ -1,7 +1,8 @@
 import User from "../models/User.model.js";
 import bcryptjs from "bcryptjs";
+import ExpressError from "../utils/ExpressError.js";
 const authController = {
-  signUp: async (req, res) => {
+  signUp: async (req, res, next) => {
     const { username, email, password } = req.body;
     if (
       !username ||
@@ -11,7 +12,7 @@ const authController = {
       email === "" ||
       password === ""
     ) {
-      return res.status(400).json("please fill all fields");
+      next(new ExpressError(400, "all fields must be non empty"));
     }
     const hashedPassword = bcryptjs.hashSync(password, 12); // synchronous
     try {
@@ -19,7 +20,7 @@ const authController = {
       await newUser.save();
       res.json("successful signup");
     } catch (error) {
-      res.status(500).json(error.message);
+      next(new ExpressError(500, error.message));
     }
   },
 };
