@@ -28,7 +28,7 @@ app.get("/", (req, res) => {
 //custom error handler
 app.use((err, req, res, next) => {
   const { status = 500, message = "something went wrong" } = err;
-  res.status(status).json({ success: false, code: status, message });
+  res.status(status).json({ success: false, status, err: message });
 });
 
 app.listen(3000, () => {
